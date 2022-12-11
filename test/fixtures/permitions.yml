@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  role: one
+  can_lock_user: false
+  can_edit_role: false
+  can_edit_game: false
+  can_edit_categories: false
+
+two:
+  role: two
+  can_lock_user: false
+  can_edit_role: false
+  can_edit_game: false
+  can_edit_categories: false

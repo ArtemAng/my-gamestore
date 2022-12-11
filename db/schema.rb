@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_11_191900) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_11_201143) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -37,6 +37,26 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_11_191900) do
     t.index ["game_studio_id"], name: "index_games_on_game_studio_id"
   end
 
+  create_table "permitions", force: :cascade do |t|
+    t.bigint "role_id", null: false
+    t.boolean "can_lock_user"
+    t.boolean "can_edit_role"
+    t.boolean "can_edit_game"
+    t.boolean "can_edit_categories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_permitions_on_role_id"
+  end
+
+  create_table "roles", force: :cascade do |t|
+    t.string "name"
+    t.boolean "edit"
+    t.boolean "read"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   add_foreign_key "games", "categories"
   add_foreign_key "games", "game_studios"
+  add_foreign_key "permitions", "roles"
 end

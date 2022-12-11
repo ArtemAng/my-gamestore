@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @permition %>
+
+<div>
+  <%= link_to "Edit this permition", edit_permition_path(@permition) %> |
+  <%= link_to "Back to permitions", permitions_path %>
+
+  <%= button_to "Destroy this permition", @permition, method: :delete %>
+</div>
