@@ -1,6 +1,13 @@
 class GamesController < ApplicationController
+  # before_action :authorize_game!
+  load_and_authorize_resource
   before_action :set_game, only: %i[ show edit update destroy ]
-
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json { head :forbidden }
+      format.html { redirect_to '/auth/sign_in', alert: exception.message }
+    end
+  end
   # GET /games or /games.json
   def index
     @games = Game.all
@@ -67,4 +74,8 @@ class GamesController < ApplicationController
     def game_params
       params.require(:game).permit(:name, :category_id, :game_studio_id, :price)
     end
+
+    # def authorize_game!
+    #   redirect_to :back
+    # end
 end

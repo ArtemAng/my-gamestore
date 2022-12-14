@@ -1,0 +1,6 @@
+1 -- destroy views
+2 -- add auth to controllers
+3 -- add pundit
+4 -- normilize associations in user
+5 -- add rack-cors
+6 -- add services (guest, find)
